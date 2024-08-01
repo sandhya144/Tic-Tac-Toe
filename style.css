@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
 }
+body{
+  background-color: #FFF5E1;
+}
 
 nav{
  background-color: rgb(29, 26, 26);
@@ -41,6 +44,10 @@ nav ul{
   display: flex;
   justify-content: center;
   align-items: center ;
+}
+
+#reset{
+ padding: 0.5rem;
 }
 
 .box:hover{
