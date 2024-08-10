@@ -5,7 +5,15 @@
   padding: 0;
 }
 body{
-  background-color: #FFF5E1;
+  background-color: #F5F7F8;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 100%;
+  margin: 0;
+}
+{
+  box-sizing: border-box;
 }
 
 nav{
@@ -51,7 +59,8 @@ nav ul{
 }
 
 .box:hover{
-  background-color: rgb(243, 235, 243);
+  /* background-color: rgb(243, 235, 258); */
+  background-color: #EEE7DA;
 }
 
 .imgbox img {
@@ -84,4 +93,3 @@ nav ul{
 .bb-0{
   border-bottom: 0 ;
 }
-
