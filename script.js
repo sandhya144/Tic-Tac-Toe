@@ -1,9 +1,8 @@
 console.log("Welcome to Tic Tac Toe")
-// let music = new Audio("you like it.mp3")
 let audioTurn = new Audio("Tingsound.mp3")
-let gameover = new Audio("gameover01.mp3")
 let turn = "X";
 let isgameover = false;
+let confettiInterval;   // Declare the interval globally....
 
 // Function to change the turn
 const changeTurn = () => {
@@ -13,6 +12,7 @@ const changeTurn = () => {
 // Function to check for a win 
 const checkWin = () =>{
     let boxtext = document.getElementsByClassName('boxtext');
+    console.log(boxtext)
     let wins = [
         [0,1,2],
         [3,4,5],
@@ -24,15 +24,25 @@ const checkWin = () =>{
         [2,5,8],
     ] 
     wins.forEach (p =>{
-     if((boxtext[p[0]].innerText === boxtext[p[1]].innerText) && (boxtext[p[1]].innerText === boxtext[p[2]].innerText) && (boxtext[p[0]].innerText !== " ")) {
+     if((boxtext[p[0]].innerText === boxtext[p[1]].innerText) && (boxtext[p[1]].innerText === boxtext[p[2]].innerText) && (boxtext[p[0]].innerText !== "")) {
         document.querySelector('.info').innerText = boxtext[p[0]].innerText + " WON"
-         isgameover = true ; 
+         isgameover = true ;
+         startConfetti();    
            } 
-    })
+    });
 }
 
+// Start confetti function .......
 
-// logic....
+function startConfetti() {
+  confetti({
+      particleCount: 300,
+      spread: 360,
+      origin: { y: 0.4 }
+  });
+}
+
+// logic ....
 
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element =>{
@@ -51,9 +61,20 @@ Array.from(boxes).forEach(element =>{
                 document.getElementsByClassName('info')[0].innerText = "Turn for " + turn;
         }
     }
-    })
+    });
 
-})
+});
 
+// reset button ......
 
+   document.getElementById('reset').addEventListener('click', () => {
+    let boxtext = document.querySelectorAll('.boxtext');
+    Array.from(boxtext).forEach(element => {
+        element.innerText = "";
+    });
+    turn = "X";
+    isgameover = false;
+    document.getElementsByClassName('info')[0].innerText = "Turn for " + turn;
 
+});
+  
