@@ -49,7 +49,7 @@ Array.from(boxes).forEach(element =>{
     let boxtext = element.querySelector('.boxtext');
     element.addEventListener ('click', ()=>{
         
-        if (boxtext.innerText === '') {
+        if (boxtext.innerText === '' && !isgameover) {
             boxtext.innerText = turn;
             turn = changeTurn();
             if (audioTurn.readyState >= 3) { // Checks if the audio is ready to play
