@@ -10,7 +10,7 @@ This project is a simple implementation of the classic Tic Tac Toe game using HT
 • Confetti animation on winning.
 # Installation
 • Clone the repository to your local machine: <br>
-   Use git clone https://github.com/your-username/tic-tac-toe.git <br>
+   Use git clone https://github.com/sandhya144/Tic-Tae-Toe <br>
 • Open the index.html file in your browser to start playing.
 # How to Play
 • The game starts with Player X. <br>
