@@ -1,4 +1,4 @@
-# Tic-Tae-Toe
+# Tic-Tac-Toe
 # Description
 This project is a simple implementation of the classic Tic Tac Toe game using HTML, CSS, and JavaScript. The game is designed to be played by two players, with each player taking turns to place their mark (X or O) on a 3x3 grid. The goal is to get three marks in a row horizontally, vertically, or diagonally.
 
