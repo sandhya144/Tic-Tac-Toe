@@ -12,7 +12,7 @@ const WS_URL = 'wss://your-websocket-server-url';  // Example: wss://your-app.he
 // code of websocket...... 
 
 function initializeWebSocket() {
-    ws = new WebSocket('ws://localhost:8080');
+    // ws = new WebSocket('ws://localhost:8080');
     
     ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
