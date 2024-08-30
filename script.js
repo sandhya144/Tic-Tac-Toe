@@ -1,4 +1,4 @@
-console.log("Welcome to Tic Tac Toe")
+ console.log("Welcome to Tic Tac Toe")
 let audioTurn = new Audio("Tingsound.mp3");
 let turn = "X";
 let isgameover = false;
@@ -6,13 +6,13 @@ let player;
 let ws;
 
 // Replace this with your WebSocket server's public URL
-const WS_URL = 'wss://your-websocket-server-url';  // Example: wss://your-app.herokuapp.com
+// const WS_URL = 'wss://your-websocket-server-url';  // Example: wss://your-app.herokuapp.com
 
 
 // code of websocket...... 
 
 function initializeWebSocket() {
-    // ws = new WebSocket('ws://localhost:8080');
+    ws = new WebSocket('ws://localhost:8080');
     
     ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
