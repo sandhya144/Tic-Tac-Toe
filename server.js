@@ -44,13 +44,3 @@ server.on('connection', (ws) => {
 
 console.log('WebSocket server is running on ws://localhost:8080');
 
-// const express = require("express");
-// const app = express()
-
-// const path = require("path")
-// const http= require("http")
-// const {server}= require("socket.io")
-// const server= http.createServer(app)
-
-// const io = new Server(server)
-// app.use

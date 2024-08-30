@@ -5,9 +5,6 @@ let isgameover = false;
 let player;
 let ws;
 
-// Replace this with your WebSocket server's public URL
-// const WS_URL = 'wss://your-websocket-server-url';  // Example: wss://your-app.herokuapp.com
-
 
 // code of websocket...... 
 
@@ -19,7 +16,8 @@ function initializeWebSocket() {
         
         if (data.type === 'init') {
             player = data.player;
-            document.querySelector('.info').innerText = `You are Player ${player}. Turn for ${turn}`;
+            document.querySelector('.info').innerText = `YOU ARE PLAYER ${player} 
+                                                          TURN FOR ${turn}`;
         }
 
         if (data.type === 'move') {

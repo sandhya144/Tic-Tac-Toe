@@ -142,3 +142,9 @@ h3{
         flex-wrap: wrap;
     }
   }
+
+.info{
+  color: white;
+  text-shadow: 1.5rem white;
+  font-family: Gupter , serif;
+}
