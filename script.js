@@ -1,41 +1,43 @@
- console.log("Welcome to Tic Tac Toe")
+console.log("Welcome to Tic Tac Toe")
 let audioTurn = new Audio("Tingsound.mp3");
 let turn = "X";
 let isgameover = false;
 let player;
-let ws;
+// let ws;
 
 
-// code of websocket...... 
+// // code of websocket...... 
 
-function initializeWebSocket() {
-    ws = new WebSocket('ws://localhost:8080');
+// function initializeWebSocket() {
+//     ws = new WebSocket('ws://localhost:8080');
     
-    ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
+//     ws.onmessage = (event) => {
+//         const data = JSON.parse(event.data);
         
-        if (data.type === 'init') {
-            player = data.player;
-            document.querySelector('.info').innerText = `YOU ARE PLAYER ${player} 
-                                                          TURN FOR ${turn}`;
-        }
+//         if (data.type === 'init') {
+//             player = data.player;
+//             document.querySelector('.info').innerText = `YOU ARE PLAYER ${player} 
+//                                                           TURN FOR ${turn}`;
+//         }
 
-        if (data.type === 'move') {
-            const boxtext = document.getElementsByClassName('boxtext')[data.index];
-            boxtext.innerText = data.player;
-            audioTurn.play();  // Play ting sound when a move is received
-            turn = changeTurn();
-            document.querySelector('.info').innerText = `Turn for ${turn}`;
-            checkWin();
-        }
+//         if (data.type === 'move') {
+//             const boxtext = document.getElementsByClassName('boxtext')[data.index];
+//             boxtext.innerText = data.player;
+//             audioTurn.play();  // Play ting sound when a move is received
+//             turn = changeTurn();
+//             document.querySelector('.info').innerText = `Turn for ${turn}`;
+//             checkWin();
+//         }
 
-        if (data.type === 'reset') {
-            resetGame();
-        }
-    };
-}
+//         if (data.type === 'reset') {
+//             resetGame();
+//         }
+//     };
+// }
 
-initializeWebSocket();
+// initializeWebSocket();
+
+
 
 // Function to change the turn
 const changeTurn = () => {
@@ -75,15 +77,20 @@ function startConfetti() {
 
 // Game Logic......
 let boxes = document.getElementsByClassName("box");
-Array.from(boxes).forEach((element, index) => {
+Array.from(boxes).forEach((element) => {
     let boxtext = element.querySelector('.boxtext');
     element.addEventListener('click', () => {
-        if (boxtext.innerText === '' && !isgameover && turn === player) {
+        if (boxtext.innerText === '' && !isgameover ) {
             boxtext.innerText = turn;
             audioTurn.play();  // Play ting sound when a move is made locally
             turn = changeTurn();
-            ws.send(JSON.stringify({ type: 'move', index: index, player: boxtext.innerText }));
-            checkWin();
+            // ws.send(JSON.stringify({ type: 'move', index: index, player: boxtext.innerText }));
+            if (audioTurn.readyState >= 3) { // Checks if the audio is ready to play
+                audioTurn.playbackRate = 3.0;
+                audioTurn.play();
+            }
+              checkWin();
+            
             if (!isgameover) {
                 document.getElementsByClassName('info')[0].innerText = "Turn for " + turn;
             }
@@ -94,7 +101,7 @@ Array.from(boxes).forEach((element, index) => {
 // Reset button
 document.getElementById('reset').addEventListener('click', () => {
     resetGame();
-    ws.send(JSON.stringify({ type: 'reset' }));
+    // ws.send(JSON.stringify({ type: 'reset' }));
 });
 
 function resetGame() {
